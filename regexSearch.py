@@ -13,6 +13,13 @@ for doc in files:
         txtFiles.append(doc)
 
 #Write regex to match
-searchRegex = re.compile(r'\s?\w*\!') #match all words ending in !
+searchRegex = re.compile(r'\s?\w*\?') #match all words ending in ?
 
 #open each txt file and if regex triggers print to console
+for doc in txtFiles:
+    openedFile = open('{0}/{1}'.format(os.getcwd(), doc))
+    contents = openedFile.read()
+    string = ''.join(contents)
+    found = searchRegex.findall(string)
+    foundString = ' '.join(found)
+    print(foundString)
